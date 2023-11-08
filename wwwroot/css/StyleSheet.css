@@ -1,0 +1,995 @@
+﻿.qirmizi {
+    color: red !important;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+    * a {
+        text-decoration: none;
+    }
+
+.basliq .elaqe {
+    background-color: #424242;
+    text-align: right;
+}
+
+.basliq .secim1 {
+    background-color: #926446;
+}
+
+    .basliq .secim1 .container nav {
+        width: 80%;
+    }
+
+        .basliq .secim1 .container nav ul {
+            align-items: center;
+        }
+
+        .basliq .secim1 .container nav button {
+            padding: 10px 30px;
+            background-color: #7ed321;
+            border: none;
+        }
+
+            .basliq .secim1 .container nav button i {
+                border: 3px solid white;
+            }
+
+.basliq .secim2 {
+    padding: 10px;
+    background-color: #ad7a5a;
+}
+
+    .basliq .secim2 select {
+        padding: 5px 5px;
+    }
+
+    .basliq .secim2 .container .qiymet input {
+        width: 120px;
+        padding: 15px;
+    }
+
+    .basliq .secim2 .container button {
+        border: none;
+        background-color: #3d5af3;
+        padding: 2px 35px;
+    }
+
+.section1 {
+    background-color: rgb(69, 69, 158);
+}
+
+    .section1 .container {
+        background-color: #f4f2ef;
+    }
+
+        .section1 .container .div1 {
+            background-color: #f4f2ef;
+        }
+
+            .section1 .container .div1 .sol {
+                width: 80%;
+                box-shadow: 0px 0px 1px 1px rgb(226, 219, 219);
+                background-color: #ffffff;
+            }
+
+                .section1 .container .div1 .sol .yuxari {
+                    color: #3d5af3;
+                }
+
+            .section1 .container .div1 .sag {
+                width: 20%;
+            }
+
+            .section1 .container .div1 .sol .asagi .item {
+                border: 1px solid #f4f2ef;
+            }
+
+                .section1 .container .div1 .sol .asagi .item > * {
+                    display: block;
+                }
+
+            /* .section1 .container .div2 .asagi .item a .sekil ul li {
+    display: inline-block!important;
+} */
+
+            .section1 .container .div1 .sag a {
+                height: 60px;
+                background-color: #ffffff;
+                box-shadow: 0px 0px 1px 1px rgb(226, 219, 219);
+            }
+
+                .section1 .container .div1 .sag a span {
+                    display: block;
+                }
+
+            .section1 .container .div1 .sag {
+                display: flex;
+                flex-direction: column;
+                /* flex-wrap: wrap; */
+                justify-content: space-between;
+            }
+
+        .section17 .container .div2 .yuxari,
+        .section18 .container .div2 .yuxari,
+        .section1 .container .div2 .yuxari,
+        .section15 .container .div2 .yuxari,
+        .section11 .container .div2 .yuxari,
+        .section14 .container .div2 .yuxari,
+        .section1 .container .div3 .yuxari,
+        .section4 .container .div2 .yuxari {
+            background-color: #ffffff;
+            align-items: center;
+        }
+
+            .section18 .container .div2 .yuxari > div,
+            .section17 .container .div2 .yuxari > div,
+            .section1 .container .div2 .yuxari > div,
+            .section15 .container .div2 .yuxari > div,
+            .section14 .container .div2 .yuxari > div,
+            .section1 .container .div3 .yuxari > div,
+            .section4 .container .div2 .yuxari > div {
+                align-items: center;
+            }
+
+            .section15 .container .div2 .yuxari .ikonlar,
+            .section14 .container .div2 .yuxari .ikonlar,
+            .section4 .container .div2 .yuxari .ikonlar {
+                border: 1px solid rgb(194, 192, 192);
+                border-radius: 0.5cm;
+            }
+
+                .section15 .container .div2 .yuxari .ikonlar i,
+                .section14 .container .div2 .yuxari .ikonlar i,
+                .section4 .container .div2 .yuxari .ikonlar i {
+                    padding: 13px;
+                }
+
+                .section15 .container .div2 .yuxari .ikonlar a:first-child,
+                .section14 .container .div2 .yuxari .ikonlar a:first-child {
+                    border-right: 1px solid grey !important;
+                }
+
+        .section15 .container .div2 .asagi .item,
+        .section18 .container .div2 .asagi .item,
+        .section17 .container .div2 .asagi .item,
+        .section1 .container .div2 .asagi .item,
+        .section14 .container .div2 .asagi .item,
+        .section11 .container .div2 .asagi .item,
+        .section1 .container .div3 .asagi .item,
+        .section4 .container .div2 .asagi .item {
+            background-color: #ffffff;
+        }
+
+            .section15 .container .div2 .asagi .item .sekil i,
+            .section18 .container .div2 .asagi .item .sekil i,
+            .section17 .container .div2 .asagi .item .sekil i,
+            .section1 .container .div2 .asagi .item .sekil i,
+            .section14 .container .div2 .asagi .item .sekil i,
+            .section11 .container .div2 .asagi .item .sekil i,
+            .section4 .container .div2 .asagi .item .sekil i {
+                font-size: 14px;
+                padding: 8px;
+                position: absolute;
+                color: white;
+            }
+
+            .section15 .container .div2 .asagi .item .yazilar p,
+            .section18 .container .div2 .asagi .item .yazilar p,
+            .section1 .container .div2 .asagi .item .yazilar p,
+            .section17 .container .div2 .asagi .item .yazilar p,
+            .section11 .container .div2 .asagi .item .yazilar p,
+            .section14 .container .div2 .asagi .item .yazilar p,
+            .section1 .container .div3 .asagi .item .yazilar p,
+            .section4 .container .div2 .asagi .item .yazilar p {
+                display: block;
+                line-height: 20px;
+                margin: 2px 0px;
+            }
+
+        .section18 .container .div2 .asagi .item,
+        .section11 .container .div2 .asagi .item,
+        .section15 .container .div2 .asagi .item,
+        .section1 .container .div2 .asagi .item,
+        .section17 .container .div2 .asagi .item,
+        .section14 .container .div2 .asagi .item,
+        .section1 .container .div3 .asagi .item,
+        .section4 .container .div2 .asagi .item {
+            width: 23%;
+        }
+
+            .section15 .container .div2 .asagi .item img,
+            .section18 .container .div2 .asagi .item img,
+            .section14 .container .div2 .asagi .item img,
+            .section11 .container .div2 .asagi .item img,
+            .section1 .container .div2 .asagi .item img,
+            .section17 .container .div2 .asagi .item img,
+            .section1 .container .div3 .asagi .item img,
+            .section17 .container .div3 .asagi .item img,
+            .section4 .container .div2 .asagi .item img {
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .section18 .container .div2 .asagi .item .fa-file,
+            .section15 .container .div2 .asagi .item .fa-file,
+            .section14 .container .div2 .asagi .item .fa-file,
+            .section11 .container .div2 .asagi .item .fa-file,
+            .section1 .container .div2 .asagi .item .fa-file,
+            .section17 .container .div2 .asagi .item .fa-file,
+            .section4 .container .div2 .asagi .item .fa-file {
+                left: 5px;
+                top: 5px;
+                border-radius: 100%;
+                background-color: #7ed321;
+            }
+
+            .section15 .container .div2 .asagi .item .fa-pen-to-square,
+            .section18 .container .div2 .asagi .item .fa-pen-to-square,
+            .section14 .container .div2 .asagi .item .fa-pen-to-square,
+            .section4 .container .div2 .asagi .item .fa-pen-to-square,
+            .section17 .container .div2 .asagi .item .fa-pen-to-square,
+            .section1 .container .div2 .asagi .item .fa-pen-to-square {
+                background-color: white;
+                color: #3d5af3 !important;
+                border-radius: 0.1cm;
+                bottom: 3px;
+                left: 60px;
+                padding: 4px !important;
+            }
+
+            .section18 .container .div2 .asagi .item .fa-circle-info,
+            .section15 .container .div2 .asagi .item .fa-circle-info,
+            .section4 .container .div2 .asagi .item .fa-circle-info,
+            .section17 .container .div2 .asagi .item .fa-circle-info,
+            .section14 .container .div2 .asagi .item .fa-circle-info,
+            .section1 .container .div2 .asagi .item .fa-circle-info {
+                background-color: white;
+                color: #f33d9e !important;
+                border-radius: 0.1cm;
+                bottom: 3px;
+                left: 3px;
+                padding: 4px !important;
+            }
+
+            .section15 .container .div2 .asagi .item .fa-trash,
+            .section18 .container .div2 .asagi .item .fa-trash,
+            .section4 .container .div2 .asagi .item .fa-trash,
+            .section17 .container .div2 .asagi .item .fa-trash,
+            .section14 .container .div2 .asagi .item .fa-trash,
+            .section1 .container .div2 .asagi .item .fa-trash {
+                background-color: white;
+                color: #189116 !important;
+                border-radius: 0.1cm;
+                bottom: 3px;
+                left: 32px;
+                padding: 4px !important;
+            }
+
+            .section17 .container .div2 .asagi .item .fa-heart,
+            .section18 .container .div2 .asagi .item .fa-heart,
+            .section15 .container .div2 .asagi .item .fa-heart,
+            .section11 .container .div2 .asagi .item .fa-heart,
+            .section14 .container .div2 .asagi .item .fa-heart,
+            .section1 .container .div2 .asagi .item .fa-heart,
+            .section4 .container .div2 .asagi .item .fa-heart {
+                right: 0px;
+                color: rgb(200, 193, 193);
+            }
+
+            .section18 .container .div2 .asagi .item .fa-hammer,
+            .section17 .container .div2 .asagi .item .fa-hammer,
+            .section15 .container .div2 .asagi .item .fa-hammer,
+            .section11 .container .div2 .asagi .item .fa-hammer,
+            .section14 .container .div2 .asagi .item .fa-hammer,
+            .section1 .container .div2 .asagi .item .fa-hammer,
+            .section4 .container .div2 .asagi .item .fa-hammer {
+                top: 5px;
+                left: 40px;
+                border-radius: 100%;
+                background-color: rgb(222, 51, 51);
+            }
+
+            .section15 .container .div2 .asagi .item .fa-crown,
+            .section18 .container .div2 .asagi .item .fa-crown,
+            .section17 .container .div2 .asagi .item .fa-crown,
+            .section1 .container .div2 .asagi .item .fa-crown,
+            .section11 .container .div2 .asagi .item .fa-crown,
+            .section14 .container .div2 .asagi .item .fa-crown,
+            .section4 .container .div2 .asagi .item .fa-crown {
+                bottom: 0px;
+                right: 0px;
+                background-color: white;
+                color: yellow !important;
+                padding: 4px !important;
+                margin: 0px 5px 5px;
+                border-radius: 0.1cm;
+            }
+
+            .section18 .container .div2 .asagi .item .fa-gem,
+            .section15 .container .div2 .asagi .item .fa-gem,
+            .section1 .container .div2 .asagi .item .fa-gem,
+            .section17 .container .div2 .asagi .item .fa-gem,
+            .section11 .container .div2 .asagi .item .fa-gem,
+            .section14 .container .div2 .asagi .item .fa-gem,
+            .section4 .container .div2 .asagi .item .fa-gem {
+                bottom: 5px;
+                right: 35px;
+                background-color: white;
+                color: rgb(222, 51, 51) !important;
+                padding: 4px !important;
+                border-radius: 0.1cm;
+            }
+
+            .section18 .container .div2 .asagi .item .fa-percent,
+            .section15 .container .div2 .asagi .item .fa-percent,
+            .section1 .container .div2 .asagi .item .fa-percent,
+            .section17 .container .div2 .asagi .item .fa-percent,
+            .section11 .container .div2 .asagi .item .fa-percent,
+            .section14 .container .div2 .asagi .item .fa-percent,
+            .section4 .container .div2 .asagi .item .fa-percent {
+                top: 5px;
+                left: 80px;
+                border-radius: 100%;
+                background-color: orange;
+            }
+
+            .section15 .container .div2 .asagi .item .fa-angle-left,
+            .section18 .container .div2 .asagi .item .fa-angle-left,
+            .section1 .container .div2 .asagi .item .fa-angle-left,
+            .section11 .container .div2 .asagi .item .fa-angle-left,
+            .section17 .container .div2 .asagi .item .fa-angle-left,
+            .section14 .container .div2 .asagi .item .fa-angle-left,
+            .section4 .container .div2 .asagi .item .fa-angle-left {
+                /* opacity: 1; */
+                top: 85px;
+                left: 5px;
+                border-radius: 100%;
+                background-color: #6b6b6d;
+                padding: 10px !important;
+            }
+
+            .section15 .container .div2 .asagi .item .fa-angle-right,
+            .section17 .container .div2 .asagi .item .fa-angle-right,
+            .section18 .container .div2 .asagi .item .fa-angle-right,
+            .section1 .container .div2 .asagi .item .fa-angle-right,
+            .section11 .container .div2 .asagi .item .fa-angle-right,
+            .section14 .container .div2 .asagi .item .fa-angle-right,
+            .section4 .container .div2 .asagi .item .fa-angle-right {
+                /* opacity: 0; */
+                top: 85px;
+                right: 5px;
+                border-radius: 100%;
+                background-color: #6b6b6d;
+                padding: 10px !important;
+            }
+
+    .section17 .div2 .asagi .item:hover .section1 .container .div2 .asagi .item .fa-angle-right,
+    .section15 .div2 .asagi .item:hover .section1 .container .div2 .asagi .item .fa-angle-right,
+    .section1 .div2 .asagi .item:hover .section1 .container .div2 .asagi .item .fa-angle-right {
+        opacity: 1 !important;
+    }
+
+.fa-angle-left,
+.fa-angle-right {
+    opacity: 0;
+    transition: .2s;
+}
+
+.item:hover .fa-angle-left,
+.item:hover .fa-angle-right {
+    opacity: 1;
+}
+
+.section11 .container .div3 .yuxari .nese .secimler,
+.section1 .container .div3 .yuxari .nese .secimler,
+.basliq .secim3 .container .secimler {
+    border-radius: 0.5cm;
+    border: 1px solid #c2c2c5;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+.section2 {
+    background-color: #8b9ae2;
+}
+
+    .section2 .container {
+        background-color: #ffffff;
+    }
+
+        .section2 .container .yazilar p {
+            line-height: 15px;
+        }
+
+        .section2 .container .xett {
+            height: 2px;
+            background-color: #c2c2c5;
+        }
+
+        .section2 .container .axtaris div a {
+            padding: 3px 10px;
+            border: 1px solid silver;
+            margin: 5px;
+            border-radius: 0.4cm;
+            color: silver;
+        }
+
+a:last-child i .section3 {
+    background-color: #8388a1;
+}
+
+.section3 .container .azerbaycan ul li,
+.section3 .container .baki .rayonlar ul li {
+    display: inline-block;
+    width: 10%;
+}
+
+.section3 .container .azerbaycan ul,
+.section3 .container .baki .rayonlar ul {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section3 .container {
+    background-color: #eae5e1;
+}
+
+    .section3 .container .elaqe .div1 {
+        width: 35%;
+        color: #98918a;
+    }
+
+        .section3 .container .elaqe .div1 i {
+            color: #98918a;
+        }
+
+    .section3 .container .elaqe {
+        border-bottom: 1px solid #b9b2ab;
+    }
+
+    .section3 .container .baki .rayonlar a,
+    .section3 .container .azerbaycan a {
+        margin: 10px;
+        display: inline-block;
+        color: #98918a;
+        font-size: 14px;
+    }
+
+    .section3 .container .azerbaycan {
+        font-size: 14px;
+    }
+
+footer {
+    background-color: #c2c2c5;
+}
+
+    footer .container {
+        background-color: #946952;
+        font-size: 13px;
+        align-items: center;
+    }
+
+.section4 {
+    background-color: darkseagreen;
+}
+
+section .container {
+    background-color: #f4f2ef;
+}
+
+.section11 .container .div2 .asagi .item,
+.section18 .container .div2 .asagi .item,
+.section14 .container .div2 .asagi .item,
+.section1 .container .div3 .asagi .item,
+.section4 .container .div2 .asagi .item {
+    border-radius: 0.5cm;
+}
+
+    .section18 .container .div2 .asagi .item a .sekil img,
+    .section14 .container .div2 .asagi .item a .sekil img,
+    .section11 .container .div2 .asagi .item a .sekil img,
+    .section1 .container .div2 .asagi .item a .sekil img,
+    .section1 .container .div3 .asagi .item a .sekil img,
+    .section4 .container .div2 .asagi .item a .sekil img {
+        border-radius: 0.5cm 0.5cm 0 0;
+    }
+
+.section4 .container .div4 .bir {
+    color: #808182;
+}
+
+    .section4 .container .div4 .bir i {
+        color: #cbccce;
+    }
+
+.section4 .container .div4 .iki {
+    border-top: 2px solid #e8e8ee;
+    border-bottom: 2px solid #e8e8ee;
+}
+
+    .section4 .container .div4 .iki .items a {
+        padding: 5px 15px;
+        margin-right: 10px;
+        border-radius: 0.4cm;
+        background-color: #ffffff;
+        color: black;
+        border: 2px solid #ebe7e2;
+    }
+
+        .section4 .container .div4 .iki .items a:hover {
+            color: #3d5af3;
+        }
+
+.section4 .container .div4 .uc .daire .ikonlar,
+.basliq .ikonlar {
+    border-radius: 0.5cm;
+    border: 1px solid #d1d5e5;
+}
+
+    .section4 .container .div4 .uc .daire .ikonlar a:last-child i,
+    .basliq .ikonlar a:last-child i {
+        border-left: 1px solid #d1d5e5;
+    }
+
+.basliq .secim3 {
+    background-color: #faf6f3;
+}
+
+.section4 .container .reklam {
+    height: 250px;
+    background-color: #8b9ae2;
+    font-size: 50px;
+    padding-top: 90px;
+}
+
+.section2 .container .yazilar ul li {
+    line-height: 16px;
+}
+
+.section5 .container .items .item {
+    width: 48%;
+    border: 2px solid #d8d4d0;
+}
+
+    .section5 .container .items .item img {
+        width: 180px;
+    }
+
+    .section5 .container .items .item .yazilar {
+        border-left: 1px solid #d6d6d8;
+    }
+
+        .section5 .container .items .item .yazilar p {
+            font-size: 14px;
+            line-height: 15px;
+        }
+
+.section5 .container > h3 {
+    font-size: 20px;
+}
+
+.basliq .secim3 .container > h3 {
+    font-size: 20px;
+}
+
+.section6 .container .elan .sol {
+    width: 65%;
+}
+
+.section6 .container .elan .sag {
+    width: 35%;
+}
+
+    .section6 .container .elan .sag ul li {
+        line-height: 15px;
+        font-size: 12px;
+        margin: 10px;
+    }
+
+.section6 .container .elan .sol form .rayon button {
+    border: 1px solid #b4b1b1;
+    background-color: #f6f2f2;
+    font-weight: bold;
+}
+
+.section6 .container .elan .sol form .sekil button {
+    border: 1px solid #b4b1b1;
+    background-color: #f6f2f2;
+}
+
+.section6 .container .elan .sol form .davamet button {
+    border: none;
+}
+
+.section6 .container .elan .sol form .sekil .photoarea {
+    border: 3px solid gainsboro;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+    .section6 .container .elan .sol form .sekil .photoarea .item {
+        position: relative;
+        width: 21%;
+        margin: 10px;
+    }
+
+    .section6 .container .elan .sol form .sekil .photoarea img {
+        width: 100%;
+    }
+
+    .section6 .container .elan .sol form .sekil .photoarea .item:after {
+        content: 'remove';
+        width: 100% !important;
+        height: 100%;
+        background-color: rgba(94, 92, 92, 0.5);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        text-align: center;
+        padding-top: 20px;
+        opacity: 0;
+    }
+
+.section7 .container > div {
+    background-color: #cdc4bc;
+    height: 40vh;
+}
+
+.section6 .container .elan .sol form .sekil .photoarea .item:hover::after {
+    opacity: 1;
+}
+
+.section8 .container .sol {
+    width: 60%;
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #8388a1;
+}
+
+.section8 .container .sag {
+    width: 40%;
+}
+
+    .section8 .container .sag p {
+        font-size: 15px;
+        line-height: 15px;
+    }
+
+.section8 .container .sol > div > div input {
+    width: 60%;
+}
+
+.section8 .container .sol button {
+    border: none;
+    margin-left: 134px;
+}
+
+.section8 .container .sol .yazilar {
+    text-align: right;
+    padding: 0px 0px 20px 0px;
+}
+
+.section9 .container > div {
+    background-color: #f3f3f3;
+    height: 25vh;
+}
+
+.section9 input {
+    border: 1px solid #eae5e1;
+}
+
+.section9 button {
+    border: none;
+}
+
+.section10 .container .sol {
+    width: 60%;
+    background-color: #f3f3f3;
+}
+
+.section10 .container .sag {
+    width: 35%;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.section10 .container form input {
+    width: 60%;
+    padding: 5px;
+}
+
+.section10 .container form button {
+    border: none;
+}
+
+.section11 .container .bir {
+    background-color: #fffedf;
+}
+
+    .section11 .container .bir .orta {
+        width: 40%;
+    }
+
+    .section11 .container .bir .sag {
+        width: 30%;
+    }
+
+    .section11 .container .bir .sol {
+        width: 20%;
+    }
+
+        .section11 .container .bir .sol button {
+            border: 1px solid #3d5af3;
+        }
+
+    .section11 .container .bir .orta i,
+    .section11 .container .bir .sag i {
+        font-size: 25px;
+    }
+
+.section11 .container .iki {
+    background-color: #323232;
+}
+
+    .section11 .container .iki .asagi .sekil {
+        background-color: #4d4d4d;
+    }
+
+        .section11 .container .iki .asagi .sekil img {
+            height: 350px;
+            object-fit: cover;
+        }
+
+    .section11 .container .iki .asagi .items {
+        width: 60%;
+        margin: 10px;
+    }
+
+        .section11 .container .iki .asagi .items img {
+            width: 15%;
+            margin: 5px;
+        }
+
+.section11 .container .uc .sol {
+    border: 1px solid #936447;
+}
+
+    .section11 .container .uc .sol p {
+        height: 55px;
+    }
+
+    .section11 .container .uc .sol .birinci {
+        background-color: #936447;
+    }
+
+    .section11 .container .uc .sol .ikinci {
+        color: #936447;
+        font-size: 17px;
+    }
+
+.section11 .container .uc .sag .items div a {
+    background-color: whitesmoke;
+    border: 1px solid #936447;
+    color: #936447;
+}
+
+.section11 .container .uc .sag .items div p {
+    background-color: #936447;
+    font-size: 11px;
+    padding: 3px 6px;
+    font-weight: bold;
+    top: -20px;
+    right: 5px;
+}
+
+.section11 .container .dord .sol button {
+    padding: 20px 30px;
+    background-color: #a4243b;
+    color: white;
+    border: 1px solid #a4243b;
+    font-size: 21px;
+    display: inherit;
+    transition: 0.2s;
+}
+
+    .section11 .container .dord .sol button:hover,
+    button {
+        background-color: white;
+        color: #a4243b;
+    }
+
+.section11 .container .dord .sol div {
+    background-color: #f4f2ef;
+}
+
+    .section11 .container .dord .sol div p {
+        line-height: 5px;
+    }
+
+    .section11 .container .dord .sol div .zeng {
+        background-color: #3d5af3;
+        font-size: 18px;
+    }
+
+.section11 .container .dord .sol > p,
+.section11 .container .dord .sol > p span {
+    margin: 0px;
+}
+
+.section11 .container .dord .sol .edit,
+.section11 .container .dord .sol .delete {
+    border: 1px solid #424242;
+}
+
+    .section11 .container .dord .sol .delete:hover {
+        border: 1px solid red;
+    }
+
+        .section11 .container .dord .sol .delete:hover i {
+            color: red;
+        }
+
+    .section11 .container .dord .sol .edit:hover {
+        border: 1px solid #3d5af3;
+    }
+
+        .section11 .container .dord .sol .edit:hover i {
+            color: #3d5af3;
+        }
+
+.section11 .container .dord .sag .birinci .div1 .item {
+    border-bottom: 1px solid #d3d0d0;
+}
+
+.section11 .container .dord .sag .ikinci a {
+    background-color: #f6f0e7;
+    border-radius: 0.3cm;
+}
+
+.section11 .container .dord .ucuncu {
+    align-items: center;
+}
+
+    .section11 .container .dord .ucuncu .face {
+        background-color: #3d5af3;
+        color: white;
+        padding: 2px;
+        border-radius: 0.1cm;
+        font-size: 13px;
+    }
+
+    .section11 .container .dord .ucuncu .nese {
+        font-size: 13px;
+    }
+
+.section11 .container .bes a {
+    padding: 7px 15px;
+    border: 1px solid #d8d8db;
+}
+
+    .section11 .container .bes a:first-child {
+        background-color: #7ed321;
+        color: white;
+    }
+
+    .section11 .container .bes a:hover {
+        background-color: #7ed321 !important;
+        color: white;
+    }
+
+.section11 .container .bes ul li {
+    display: inline-block;
+}
+
+.section11 .container .div2 {
+    margin: 0px !important;
+}
+
+.section12 .container .elan .sol {
+    width: 65%;
+}
+
+    .section12 .container .elan .sol form .rayon button {
+        border: 1px solid #b4b1b1;
+        background-color: #f6f2f2;
+    }
+
+    .section12 .container .elan .sol form .sekil button {
+        border: 1px solid #b4b1b1;
+        background-color: #f6f2f2;
+    }
+
+    .section12 .container .elan .sol form .davamet button {
+        border: none;
+    }
+
+.section14 .container .div2 .name {
+    border-bottom: 1px solid #b9b2ab;
+    margin-bottom: 10px;
+}
+
+    .section14 .container .div2 .name i {
+        margin: 0px 5px;
+    }
+
+    .section14 .container .div2 .name > * {
+        color: #9b9997;
+    }
+
+.section15 .container .div2 .asagi .item .fa-check {
+    background-color: white;
+    color: #be2b2b !important;
+    border-radius: 0.1cm;
+    bottom: 3px;
+    left: 90px;
+    padding: 4px !important;
+}
+
+.section16 .sol {
+    width: 20%;
+    padding: 10px;
+    border: 1px solid #8388a1;
+}
+
+.section16 .sag {
+    background-color: #e4e6e7;
+    border: 1px solid #8388a1;
+}
+
+.section16 .container form input {
+    margin: 15px 20px 5px 0px;
+    padding: 10px;
+    border: 3px solid #d1d7f1;
+}
+
+.section16 .container form button {
+    padding: 10px;
+    border: 3px solid #d1d7f1;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+    .section16 .container form button:hover {
+        background-color: #a4243b;
+        color: white;
+        border: 3px solid white;
+    }
+
+.section16 .container form select {
+    border: 3px solid #d1d7f1;
+    padding: 10px;
+}
+
+.section17 .container .div2 h3 {
+    border-bottom: 2px soldi black;
+}
+
+
+/*  -------------------------------------------------------JS ucun -------------------------------------------------------- */
+
+
+.css1 {
+    display: none !important;
+}
+
+.css2 {
+    display: block !important;
+}
+
+.section6 .container .elan .sol form > div {
+    display: flex;
+}
+
+.hideinput {
+    display: none !important;
+}

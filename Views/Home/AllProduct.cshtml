@@ -1,0 +1,146 @@
+﻿@using Proje1.ViewModel;
+@model SearchModel;
+@*@model Product;*@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@{
+	Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section1 w-100 px-5">
+	<div class="container w-75 p-3">
+		<div class="div1 w-100 d-flex justify-content-between">
+			<div class="sol d-flex flex-wrap">
+				<div class="yuxari w-100 d-flex justify-content-between p-1">
+					<p>Alis</p>
+					<p>Kiraye</p>
+					<a href="">
+						<p>Bu gun - 442 yeni elan</p>
+					</a>
+				</div>
+				<div class="asagi w-100 d-flex justify-content-between">
+					<div class="item w-25 p-2">
+						<p>Yeni tikililer</p>
+						<a href="">1-otaqli</a>
+						<a href="">2-otaqli</a>
+						<a href="">3-otaqli</a>
+						<a href="">4-otaqli</a>
+						<a href="">5-otaq ve ya daha cox</a>
+					</div>
+					<div class="item w-25 p-2">
+						<p>Kohne tikililer</p>
+						<a href="">1-otaqli</a>
+						<a href="">2-otaqli</a>
+						<a href="">3-otaqli</a>
+						<a href="">4-otaqli</a>
+						<a href="">5-otaq ve ya daha cox</a>
+					</div>
+					<div class="item w-25 p-2">
+						<p>Yasayis obyektleri</p>
+						<a href="">Menziller</a>
+						<a href="">Yeni tikililer</a>
+						<a href="">Kohne tikililer</a>
+						<a href="">Evler / Villalar</a>
+						<a href="">Baglar</a>
+					</div>
+					<div class="item w-25 p-2">
+						<p>Ticaret obyektleri</p>
+						<a href="">Ofisler</a>
+						<a href="">Qarajlar</a>
+						<a href="">Torpaq saheleri</a>
+						<a href="">Obyektler</a>
+					</div>
+				</div>
+			</div>
+			<div class="sag ms-2">
+				<a href="" class="w-100 p-1">
+					<span>Gunluk kiraye menziller</span>
+					<span>278 elan</span>
+				</a>
+				<a href="" class="w-100 my-2 p-1">
+					<span>Xerite uzre axtaris</span>
+					<span>65152 elan</span>
+				</a>
+				<a href="" class="w-100 p-1">
+					<span>Tikinti xidmetleri</span>
+					<span>4056 elan</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section18 w-100 px-5">
+	<div class="container w-75 p-3">
+		<div class="div2 w-100 d-flex flex-wrap my-2">
+			<div class="yuxari w-100 d-flex justify-content-between p-1">
+				<a href="/Home/ReadMoreVip" class="text-dark fw-bold">VIP ELANLAR</a>
+				<div class="d-flex justify-content-around">
+					<a href="/Home/ReadMoreVip">Daha cox</a>
+					@{
+						int a = !string.IsNullOrEmpty(Context.Request.Query["page"]) ? int.Parse(Context.Request.Query["page"]) : 0;
+					}
+					<div class="ikonlar d-flex justify-content-around px-4 mt-3 w-50">
+						<ul class="pagination">
+							<li class="page-item @(a==0 ? "disabled" : "")">
+								<a class="page-link" href="?page=@(a-1)"><i class="fa-solid fa-chevron-left"></i></a>
+							</li>
+							<li class="page-item @(a==ViewBag.PageCount2-1 ? "disabled" : "")">
+								<a class="page-link" href="?page=@(a+1)"><i class="fa-solid fa-chevron-right"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="asagi w-100 d-flex flex-wrap justify-content-between mt-3">
+				@foreach (var item in Model.Mehsullar)
+				{
+					<div class="item m-2">
+						<a href="">
+							<div class="sekil w-100 position-relative">
+								<i class="fa-solid fa-heart"></i>
+								@if (item.ProductTemir == true)
+								{
+									<i class="fa-solid fa-hammer"></i>
+								}
+								@if (item.ProductCixaris == true)
+								{
+									<i class="fa-solid fa-file"></i>
+								}
+								@if (item.ProductIpoteka == true)
+								{
+									<i class="fa-solid fa-percent"></i>
+								}
+								<i class="fa-solid fa-crown"></i>
+								<i class="fa-solid fa-gem"></i>
+								<i class="fa-solid fa-angle-left"></i>
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								@if (User.Identity.IsAuthenticated)
+								{
+									@if (@User.Claims.SingleOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name).Value == "Admin1")
+									{
+										<a href="/Admin/Edit/@item.ProductId"><i class="fa-solid fa-pen-to-square"></i></a>
+									}
+									@if (item.ProductUserId == int.Parse(User.FindFirst("Id").Value))
+									{
+										<a href="/Admin/Delete/@item.ProductId"><i class="fa-solid fa-trash"></i></a>
+									}
+								}
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								<img src="/img/@item.Photos.FirstOrDefault().PhotoUrl" class="w-100">
+								<i class="fa-solid fa-angle-right"></i>
+							</div>
+							<div class="yazilar w-100 p-2">
+								<p><span>@item.ProductPrice</span><span>AZN</span></p>
+								<p>@item.ProductLocation</p>
+								<p><span>@item.ProductArea</span>m²</p>
+								<p><span>@item.ProductLocation</span>, <span>@item.ProductDate</span></p>
+							</div>
+						</a>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</section>

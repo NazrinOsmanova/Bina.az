@@ -1,0 +1,18 @@
+﻿@{
+	Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section9 w-100 px-5 bg-success">
+	<div class="container w-75 p-2 bg-white">
+		<div class="rounded">
+			<h4 class="text-center bg-secondary rounded p-2 text-light">Şifrəni unutdum</h4>
+			<div class="d-flex flex-wrap">
+				<p class="fw-bold ms-5 mt-2">Email</p>
+				<form action="/Admin/SendMessage" class="d-flex flex-wrap ms-4">
+					<input name="mail" type="text" class="w-100 my-2 p-1">
+					<button class="bg-danger text-light px-2 py-1 rounded">Sifreni gonder</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

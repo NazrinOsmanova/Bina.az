@@ -1,0 +1,296 @@
+﻿@using Proje1.Models;
+@model Product;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+	Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section11  w-100 px-5">
+	<div class="container w-75">
+		<div class="bir p-3 d-flex flex-wrap">
+			<div class="sol mx-auto m-2">
+				<img class="w-100"
+					 src="https://bina.azstatic.com/uploads/o450x450/2023%2F01%2F12%2F10%2F11%2F20%2F7f2b7f96-ffed-4b13-843c-763edd7d2c2e%2Flogo.jpg">
+				<a href=""><button class="w-100 mt-2 rounded p-2 text-primary"><span>255</span> teklif</button></a>
+			</div>
+			<div class="orta mx-auto m-2">
+				<h3><span>Öz evim</span> daşınmaz əmlak agentliyi</h3>
+				<p class="lh-1">
+					"Öz evim" daşınmaz əmlak agentliyi Bakı şəhəri və Abşeron rayonu ərazisində
+					fəaliyyət göstərir.
+					İstiqamətlər: yeni və köhnə tikili mənzillər, fərdi yaşayış evləri, villa, bağ evi, həyət evi və
+					obyektlərin alqı-satqısı və bazara təqdim olunması, mülkiyyətçilərə satışla bağlı köməkliyin
+					göstərilməsi.
+				</p>
+				<p><i class="fa-regular fa-clock text-success"></i> Hər gün: 10:00 – 21:00</p>
+			</div>
+			<div class="sag mx-auto m-2 p-2">
+				<i class="fa-solid fa-location-dot text-success"></i>
+				<a href="" class="text-dark"> <span>@Model.ProductSeher.SeherName</span> şəhəri, <span>@Model.ProductRayon.RayonName</span> r., Z. Bünyadov pr. 19</a>
+			</div>
+		</div>
+
+		<div class="iki">
+			<div class="yuxari d-flex justify-content-between p-2">
+				<div class="sol">
+					<a href="" class="text-light">SATIS</a>
+					<i class="fa-solid fa-chevron-right text-danger"></i>
+					<a href="" class="text-light">@Model.ProductOtaq OTAQLI KOHNE TIKILI</a>
+				</div>
+				<p class="text-light">#@Model.ProductId</p>
+			</div>
+			<div class="asagi d-flex justify-content-between">
+				<div class="sekil w-50 m-3">
+					<img class="mx-auto d-flex"
+						 src="/img/@Model.Photos.FirstOrDefault().PhotoUrl">
+				</div>
+				<div class="items">
+					@foreach (var item in Model.Photos)
+					{
+						<img src="/img/small/@item.PhotoUrl"
+						 class="item">
+					}
+				</div>
+			</div>
+		</div>
+
+		<div class="uc w-100 d-flex justify-content-between">
+			<div class="sol w-25 my-2 me-2">
+				<p class="birinci w-100 text-center m-0 pt-2 text-light fw-bold h4">
+					<span class="w-75">@Model.ProductPrice</span>AZN
+				</p>
+				<p class="ikinci w-100 text-center m-0 pt-3 fw-bold bg-light h6"><span>@Model.ProductArea</span>AZN/m2</p>
+			</div>
+			<div class="sag d-flex flex-wrap m-2 w-75">
+				<h3 class="w-100">Satılır 2 otaqlı köhnə tikili <span>@Model.ProductArea</span> m², <span>@Model.ProductLocation</span></h3>
+				<div class="items w-100 text-center d-flex flex-wrap">
+					<div class="position-relative me-2">
+						<a href="" class="rounded py-2 px-3"><i class="fa-solid fa-up-long"></i> Elani ireli cek</a>
+						<p class="position-absolute text-light rounded fw-bold">3 AZN-den</p>
+					</div>
+					<div class="position-relative me-2">
+						<a href="" class="rounded py-2 px-3"><i class="fa-solid fa-gem"></i> Elani VIP et</a>
+						<p class="position-absolute text-light rounded fw-bold">10 AZN-den</p>
+					</div>
+					<div class="position-relative me-2">
+						<a href="" class="rounded py-2 px-3"><i class="fa-solid fa-crown"></i> Elani ireli cek</a>
+						<p class="position-absolute text-light rounded fw-bold">3 AZN-den</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="dord w-100 d-flex justify-content-between bg-white py-3">
+			<div class="sol w-25 m-2">
+				<button class="rounded py-4 px-5 fw-bold mx-auto text-center">IPOTEKA ILE AL</button>
+				<div class="p-2 rounded mt-3">
+					<p>@Model.ProductUser.UserName</p>
+					<a href="" class="">@Model.ProductUser.UserMail</a>
+					<div class="zeng text-light text-center p-2 m-2 rounded fw-bold">
+						<p>Nomreni goster</p>
+						<span>@Model.ProductUser.UserPhone</span>
+					</div>
+				</div>
+				<a href="" class="d-inline-block text-dark">
+					<i class="fa-regular fa-heart text-danger"></i>
+					Seçilmişlərə əlavə et
+				</a>
+				<a href="" class="d-inline-block text-dark mb-3">
+					<i class="fa-regular fa-flag text-danger"></i>
+					Şikayət etmək
+				</a>
+				<p>Elanın nömrəsi: <span>@Model.ProductId</span></p>
+				<p>Baxışların sayı: <span>349</span></p>
+				<p>Yeniləndi: <span>@Model.ProductDate</span></p>
+				<a href="/Admin/Edit/@Model.ProductId" class="edit w-100 py-1 my-1 text-center text-dark mt-3 d-inline-block">
+					<i class="fa-solid fa-pen"></i> Duzelis et
+				</a>
+				<a href="/Admin/Delete/@Model.ProductId" class="delete w-100 py-1 my-1 text-center text-dark d-inline-block">
+					<i class="fa-solid fa-x"></i> Elani sil
+				</a>
+			</div>
+			<div class="sag w-75 m-2">
+				<div class="birinci d-flex justify-content-between">
+					<div class="div1 w-50 mx-2">
+						<div class="item d-flex pb-1">
+							@if (@Model.ProductMenzil != null)
+							{
+								<span class="w-50 fw-bold">Kateqoriya</span>
+								<span class="w-50 fw-bold">@Model.ProductMenzil.MenzilName</span>
+							}
+						</div>
+						@if (@Model.ProductFloor != null)
+						{
+							<div class="item d-flex pb-1">
+								<span class="w-50 fw-bold">Mərtəbə</span>
+								<span class="w-50 fw-bold">@Model.ProductFloor / @Model.ProductFloorCount</span>
+							</div>
+						}
+						<div class="item d-flex pb-1">
+							<span class="w-50 fw-bold">Sahə</span>
+							<span class="w-50 fw-bold">@Model.ProductArea m²</span>
+						</div>
+						@if (@Model.ProductOtaq != null)
+						{
+							<div class="item d-flex pb-1">
+								<span class="w-50 fw-bold">Otaq sayı</span>
+								<span class="w-50 fw-bold">@Model.ProductOtaq</span>
+							</div>
+						}
+						<div class="item d-flex pb-1">
+							<span class="w-50 fw-bold">Çıxarış</span>
+							@*@if (Model.ProductCixaris == true)
+								{
+								<span class="w-50 fw-bold">var</span>
+								}
+								else
+								{
+								<span class="w-50 fw-bold">yoxdur</span>
+								}*@
+							<span class="w-50 fw-bold">@((Model.ProductCixaris == true) ? "var" : "yoxdu")</span>
+						</div>
+						<div class="item d-flex pb-1">
+							<span class="w-50 fw-bold">İpoteka</span>
+							<span class="w-50 fw-bold">@((Model.ProductIpoteka == true) ? "var" : "yoxdu")</span>
+						</div>
+						<div class="item d-flex pb-1">
+							<span class="w-50 fw-bold">Təmir</span>
+							<span class="w-50 fw-bold">@((Model.ProductTemir == true) ? "var" : "yoxdu")</span>
+						</div>
+					</div>
+					<div class="div2 w-50 mx-2">
+						<a href="">
+							<img src="https://i.stack.imgur.com/vnL0A.png" class="w-100">
+						</a>
+					</div>
+				</div>
+				@if (@Model.ProductQesebe != null)
+				{
+					<div class="ikinci py-4 mt-2">
+						<a href="" class="text-dark p-1 me-1">@Model.ProductRayon.RayonName</a>
+						<a href="" class="text-dark p-1 me-1">@Model.ProductQesebe.QesebeName</a>
+					</div>
+
+				}
+				<p>@Model.ProductDescription</p>
+				<div class="ucuncu d-flex">
+					<p class="face text-light rounded"><i class="fa-brands fa-facebook-f"></i> Tovsiye et</p>
+					<a href="" class="face ms-2 py-1 mb-3 me-2">Paylas</a>
+					<p class="nese">Dostlarinin onerdiklerini gormek ucun <a href="/Admin/Qeydiyyat">Qeydiyyatdan kec</a></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="bes w-100 d-flex justify-content-center bg-light p-3">
+			<a href="">Butun bolmeler</a>
+			<a href="">Kiraye</a>
+			<a href="">Satis</a>
+			<a href="">Yeni tikililer</a>
+			<a href="">Kohne tikililer</a>
+			<a href="">Evler / Villalar</a>
+			<a href="">Baglar</a>
+			<a href="">Ofisler</a>
+			<a href="">Torpaq</a>
+			<a href="">Obyektler</a>
+		</div>
+
+		<div class="div2 w-100 d-flex flex-wrap my-2">
+			<div class="yuxari w-100 d-flex justify-content-between p-3">
+				<a href="" class="text-dark">KIRAYE</a>
+				<a href="" class="bg-light px-3 py-1">Butun <span>289</span> teklife baxmaq</a>
+			</div>
+			<div class="asagi w-100 d-flex flex-wrap justify-content-between mt-3">
+				<div class="item m-2">
+					<a href="readmore.html">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar w-100 p-2">
+							<p><span>80 000</span><span>AZN</span></p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="#">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar w-100 p-2">
+							<p>80 000AZN</p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar w-100 p-2">
+							<p><span>80 000</span><span>AZN</span></p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar w-100 p-2">
+							<p><span>80 000</span><span>AZN</span></p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

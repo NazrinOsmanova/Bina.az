@@ -1,0 +1,375 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Proje1.Models;
+@model Product;
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="/css/StyleSheet.css">
+	<title>YENI ELAN</title>
+</head>
+
+<body>
+
+	<div class="basliq w-100">
+		<div class="elaqe text-light d-flex">
+			<div class="container w-75 pt-2 px-5">
+				<p class="d-inline-block">Dəstək xidməti: (012) 599-08-02; (012) 505-08-02</p>
+				<a href="" class="text-light mx-2">RU</a>
+				<a href="/Home/Like" class="text-light mx-2"><i class="fa-solid fa-heart"></i> Secilmisler</a>
+				<a href="/Admin/Giris" class="text-light mx-2"><i class="fa-solid fa-user"></i> Giris</a>
+			</div>
+		</div>
+		<div class="secim1">
+			<div class="container d-flex justify-content-between">
+				<nav class="d-flex justify-content-between mx-auto">
+					<ul>
+						<li class="d-inline-block mx-2">
+							<a href="/Home/Index" class="text-light">
+								<img src="https://bina.azstatic.com/assets/application/header-tabs/binaaz-logo-107847efc4c9cede987e172b22034c7dc6893bf9bc1a4805b540a53b522031a2.svg">
+							</a>
+						</li>
+						<li class="d-inline-block mx-2"><a href="/Home/AlqiSatqi" class="text-light">Alqi-satqi</a></li>
+						<li class="d-inline-block mx-2"><a href="/Home/Kiraye" class="text-light">Kiraye</a></li>
+						<li class="d-inline-block mx-2">
+							<a href="/Home/Agentlik" class="text-light">Agentlikler</a>
+						</li>
+						<li class="d-inline-block mx-2">
+							<a href="/Home/Kompleks" class="text-light">
+								Yasayis
+								kompleksleri
+							</a>
+						</li>
+					</ul>
+					<a href="/Admin/ElanYerlesdir">
+						<button class="text-light">
+							<i class="fa-solid fa-plus p-1 rounded-circle me-2"></i>Elan
+							yerlesdir
+						</button>
+					</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<section class="section6 w-100 px-5">
+		<div class="container w-75 p-3">
+			<h2 class="text-center text-light bg-secondary h4 rounded p-2">Yeni elan</h2>
+			<div class="elan d-flex justify-content-between">
+				<div class="sol m-2">
+					<form asp-action="ElanYerlesdir" asp-controller="Home" method="post" enctype="multipart/form-data">
+						@*<div asp-validation-summary="All"></div>*@
+						<div class="men my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Mən</p>
+							<div class="w-75 d-flex justify-content-between">
+								<span asp-validation-for="ProductMenzilId"></span>
+								<select class="w-50" asp-for="ProductMenzilId" asp-items="ViewBag.Menzil">
+									<option value="0"></option>
+								</select>
+								<select class="w-50 ms-1" asp-for="ProductAlisKirayeId" asp-items="ViewBag.AlisKiraye">
+									<option value="0"></option>
+								</select>
+							</div>
+						</div>
+						<div class="seher my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Şəhər</p>
+							<select class="w-75" asp-for="ProductSeherId" asp-items="ViewBag.Seher">
+								<option value=""></option>
+							</select>
+						</div>
+						<div class="otaqSayi hideinput my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Otaq sayı</p>
+							<span asp-validation-for="ProductOtaq"></span>
+							<select asp-for="ProductOtaq" class="w-25">
+								<option value=""></option>
+								<option value="2">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>
+						</div>
+						<div class="sahe my-2">
+							<p class="w-25 fw-bold">Sahə</p>
+							<div class="w-75 d-flex flex-wrap">
+								<span asp-validation-for="ProductArea" class="w-100"></span>
+								<input asp-for="ProductArea" type="number">m2
+							</div>
+						</div>
+						<div class="torpaqSahesi hideinput my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Torpaq sahəsi</p>
+							<input asp-for="ProductLandArea" type="number">sot
+						</div>
+						<div class="mertebe hideinput my-2">
+							<p class="w-25 fw-bold">Mərtəbə</p>
+							<div class="w-75 d-flex flex-wrap">
+								<span asp-validation-for="ProductFloor" class="w-100"></span>
+								<input asp-for="ProductFloor" type="number">
+							</div>
+						</div>
+						<div class="mertebeSayi hideinput my-2">
+							<p class="w-25 fw-bold">Mərtəbələrin sayı</p>
+							<div class="w-75 d-flex flex-wrap">
+								<span asp-validation-for="ProductFloorCount" class="w-100"></span>
+								<input asp-for="ProductFloorCount" type="number">
+							</div>
+						</div>
+						<div class="melumat my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Əlavə məlumat</p>
+							<textarea cols="64" rows="9" asp-for="ProductDescription"></textarea>
+						</div>
+						<div class="qiymet my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Qiymət</p>
+							<div class="w-75 d-flex flex-wrap">
+								<div class="w-50 d-flex flex-wrap">
+									<span asp-validation-for="ProductPrice"></span>
+									<input type="number" asp-for="ProductPrice">
+									<p class="d-inline-block ms-1">AZN</p>
+								</div>
+								<div class="gunay hideinput w-25 d-flex flex-wrap">
+									<select class="w-100">
+										<option value="">gunde</option>
+										<option value="">ayda</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="temir hideinput my-2 flex-wrap">
+							<p class="w-25 fw-bold">Təmir</p>
+							<div class="w-25">
+								<select class="w-100 py-2">
+									<option value="" disabled></option>
+									<option value="">Temirli</option>
+									<option value="">Temirsiz</option>
+								</select>
+								@*<div class="telefon my-2 d-flex flex-wrap">
+									<label>Temir</label>
+									<input type="checkbox" asp-for="ProductTemir" />
+									</div>*@
+							</div>
+						</div>
+						<div class="var my-2 flex-wrap">
+							<p class="w-25"></p>
+							<div class="w-25">
+								<div class="w-100">
+									<input type="checkbox" asp-for="ProductCixaris">
+									<label for="" class="fw-bold">Cixaris var </label>
+								</div>
+								<div>
+									<input type="checkbox" asp-for="ProductIpoteka">
+									<label for="" class="fw-bold">İpoteka var </label>
+								</div>
+							</div>
+						</div>
+						<div class="unvan my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Ünvan</p>
+							<input type="text" class="w-75" asp-for=ProductLocation>
+						</div>
+						<div class="rayon my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Rayon</p>
+							<div class="w-75">
+								<select class="w-100 py-2" asp-for="ProductRayonId" asp-items="ViewBag.Rayon">
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="qesebe hideinput my-2 flex-wrap">
+							<p class="w-25 fw-bold">Qəsəbə</p>
+							<div class="w-75">
+								<select class="w-100 py-2" asp-for="ProductQesebeId" asp-items="ViewBag.Qesebe">
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="xerite my-2 flex-wrap">
+							<p class="w-25 fw-bold"></p>
+							<button class="px-2 mt-2 py-1 rounded fw-bold">Xeritede gostermek</button>
+						</div>
+						<div class="sekil my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Şəkillər</p>
+							<div class="w-75">
+								<input type="file" name="Photo" multiple>
+								<ul>
+									<li class="lh-1 w-100 mb-1">Şəkillərin minimal sayı — 4 ədəd</li>
+									<li class="lh-1 w-100 mb-1">
+										Binanın birinci mərtəbədən başlamaqla tam şəklinin
+										olması
+										mütləqdir
+									</li>
+									<li class="lh-1 w-100 mb-1">Şəkillərin optimal ölçüləri — 800 x 600 pikseldir</li>
+								</ul>
+							</div>
+						</div>
+						@*	<div class="elaqedar my-2 d-flex flex-wrap">
+							<p class="w-25 fw-bold">Əlaqədar şəxs</p>
+							<div class="w-75 d-flex flex-wrap">
+							<input type="text" class="w-100">
+							</div>
+							</div>*@
+						<div class="davamet mt-3  my-2 d-flex flex-wrap">
+							<p class="w-75 lh-1 mb-1 w-25 fw-bold">
+								Elan yerləşdirərək, Siz <a href="">bina.az-ın İstifadəçi razılaşması </a> ilə razı olduğunuzu təsdiq edirsiniz.
+							</p>
+							<button class="bg-danger text-light rounded px-2">Davam etmek</button>
+						</div>
+					</form>
+				</div>
+				<div class="sag">
+					<h4 class="text-center">Qaydalar</h4>
+					<ul>
+						<li>
+							Bir ay ərzində eyni nömrədən 1 pulsuz (təkrar olmayan) elan yerləşdirmək olar. Elanı başqa
+							bir elanla əvəz etmək qadağandır. Saytda artıq mövcud olan daşınmaz əmlakın təkrarən
+							yerləşdirilməsi yalnız ödənişli əsaslarla mümkündür. Bununla belə, bir istifadəçi eyni
+							daşınmaz əmlak obyektini yalnız bir dəfə yerləşdirə bilər.
+						</li>
+						<li>
+							Əgər siz 1 ay ərzində 2 və daha artıq elan yerləşdirmək istəsəniz, hər növbəti elanın
+							qiyməti - 5 AZN olacaq.
+						</li>
+						<li>
+							Elanlar vaxtından əvvəl silinsə də, nömrə üçün nəzərdə tutulmuş ödənişsiz yer, elan dərc
+							ediləndən 30 gün sonra bərpa edilir.
+						</li>
+						<li>
+							bina.az saytında istifadə etdiyiniz ödənişli xidmətlər üçün nəzərdə tutulan məbləğ geri
+							qaytarılmır.
+						</li>
+						<li>
+							Zəhmət olmasa elanı yerləşdirən zaman əlaqə vasitələrini (telefon nömrəsi, e-mail ünvanını)
+							düzgün qeyd edin. Telefon nömrəsi ilə bağlı heç bir dəyişiklik həyata keçirilmir.
+						</li>
+						<li>Elanınızla bağlı bütün məlumatlar sizin e-mail ünvanınıza göndərilir.</li>
+						<li>
+							Bir ay ərzində eyni nömrədən 1 pulsuz (təkrar olmayan) elan yerləşdirmək olar. Elanı başqa
+							bir elanla əvəz etmək qadağandır. Saytda artıq mövcud olan daşınmaz əmlakın təkrarən
+							yerləşdirilməsi yalnız ödənişli əsaslarla mümkündür. Bununla belə, bir istifadəçi eyni
+							daşınmaz əmlak obyektini yalnız bir dəfə yerləşdirə bilər.
+						</li>
+						<li>
+							Əgər siz 1 ay ərzində 2 və daha artıq elan yerləşdirmək istəsəniz, hər növbəti elanın
+							qiyməti - 5 AZN olacaq.
+						</li>
+						<li>
+							Elanlar vaxtından əvvəl silinsə də, nömrə üçün nəzərdə tutulmuş ödənişsiz yer, elan dərc
+							ediləndən 30 gün sonra bərpa edilir.
+						</li>
+						<li>
+							bina.az saytında istifadə etdiyiniz ödənişli xidmətlər üçün nəzərdə tutulan məbləğ geri
+							qaytarılmır.
+						</li>
+						<li>
+							Zəhmət olmasa elanı yerləşdirən zaman əlaqə vasitələrini (telefon nömrəsi, e-mail ünvanını)
+							düzgün qeyd edin. Telefon nömrəsi ilə bağlı heç bir dəyişiklik həyata keçirilmir.
+						</li>
+						<li>Elanınızla bağlı bütün məlumatlar sizin e-mail ünvanınıza göndərilir.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section3 w-100 px-5">
+		<div class="container w-75 p-3">
+			<div class="elaqe w-100 d-flex justify-content-between pb-2">
+				<a href="" class="text-dark">Reklam yerlesdirin</a>
+				<div class="div1 d-flex justify-content-between">
+					<i class="fa-brands fa-facebook-f"></i>
+					<i class="fa-brands fa-instagram"></i>
+					<a href="" class="text-dark"><i class="fa-solid fa-envelope"></i> bina@bina.az</a>
+					<div class="d-flex justify-content-between">
+						<i class="fa-solid fa-phone"></i>
+						<div class="ps-2">
+							<a href="" class="d-block text-dark">(012) 599-08-02</a>
+							<a href="" class="d-block text-dark">(012) 505-08-02</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="baki w-100 my-2">
+				<h6>Bakinin rayonlari</h6>
+				<div class="rayonlar">
+					<a href="">Abseron</a>
+					<a href="">Bineqedi</a>
+					<a href="">Xetai</a>
+					<a href="">Xezer</a>
+					<a href="">Qaradaq</a>
+					<a href="">Nerimanov</a>
+					<a href="">Nesimi</a>
+					<a href="">Nizami</a>
+					<a href="">Pirallahi</a>
+					<a href="">Sabuncu</a>
+					<a href="">Sebail</a>
+					<a href="">Suraxani</a>
+					<a href="">Yasamal</a>
+				</div>
+			</div>
+			<div class="azerbaycan">
+				<h6>Butun Azerbaycan</h6>
+				<div class="yuxari my-3">
+					<a href="">Baki</a>
+					<a href="">Xirdalan</a>
+					<a href="">Sumqayit</a>
+					<a href="">Qebele</a>
+					<a href="">Quba</a>
+					<a href="">Gence</a>
+					<a href="">Xacmaz</a>
+					<a href="">Ismayilli</a>
+					<a href="">Seki</a>
+					<a href="">Samaxi</a>
+					<a href="">Lenkeran</a>
+					<a href="">Qusar</a>
+				</div>
+				<div class="asagi">
+					<a href="">Agcabedi</a>
+					<a href="">Agdam</a>
+					<a href="">Agdas</a>
+					<a href="">Agdere</a>
+					<a href="">Agstafa</a>
+					<a href="">Agsu</a>
+					<a href="">Astara</a>
+					<a href="">Balaken</a>
+					<a href="">Beyleqan</a>
+					<a href="">Berde</a>
+					<a href="">Bilesuvar</a>
+					<a href="">Cebrayil</a>
+					<a href="">Celilabad</a>
+					<a href="">Daskesen</a>
+					<a href="">Fizuli</a>
+					<a href="">Gedebey</a>
+					<a href="">Goranboy</a>
+					<a href="">Goycay</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="w-100 px-5">
+		<div class="container w-75 d-flex justify-content-between text-light">
+			<p>
+				Saytın Administrasiyası reklam bannerlərinin və yerləşdirilmiş <br> elanların məzmununa görə məsuliyyət
+				daşımır.
+			</p>
+			<p>© 2008-2023 Digital Classifieds MMC. VÖEN: 1405631661</p>
+			<a href="" class="text-light">Mobil versiyası</a>
+		</div>
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="/js/JavaScript.js"></script>
+</body>
+
+</html>

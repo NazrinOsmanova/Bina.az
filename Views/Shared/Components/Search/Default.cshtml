@@ -1,0 +1,34 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model SearchModel;
+
+<div class="secim2">
+	<div class="container w-75">
+		<form asp-controller="Home" asp-action="AllProduct" method="get" class="w-100 px-5 d-flex justify-content-between">
+			<select asp-items="ViewBag.AlisKiraye" asp-for="Kiraye">
+				<option value="">Tip secin</option>
+			</select>
+			<select asp-items="ViewBag.Menzil" asp-for="Nov">
+				<option value="">Menzil secin</option>
+			</select>
+			<select asp-for="OtaqSayi">
+				<option value="">Otaq sayi</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5 ve daha cox otaqli evler</option>
+			</select>
+			<select asp-items="ViewBag.Seher" asp-for="Seher">
+				<option value="">Seher secin</option>
+			</select>
+			@*	<select name="" id="">
+				<option value="">Etrafli axtaris</option>
+				</select>*@
+			<div class="qiymet">
+				<input type="text" placeholder="Min" asp-for="Min">
+				<input type="text" placeholder="Max" asp-for="Max">
+			</div>
+			<button class="text-light">Axtar</button>
+		</form>
+	</div>
+</div>

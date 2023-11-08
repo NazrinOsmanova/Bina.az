@@ -1,0 +1,558 @@
+﻿@using Proje1.Models;
+@using System.Security.Claims
+@using Proje1.ViewModel
+@model HomeModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+	Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section1 w-100 px-5">
+	<div class="container w-75 p-3">
+		<div class="div1 w-100 d-flex justify-content-between">
+			<div class="sol d-flex flex-wrap">
+				<div class="yuxari w-100 d-flex justify-content-between p-1">
+					<p>Alis</p>
+					<p>Kiraye</p>
+					<a href="">
+						<p>Bu gun - 442 yeni elan</p>
+					</a>
+				</div>
+				<div class="asagi w-100 d-flex justify-content-between">
+					<div class="item w-25 p-2">
+						<p>Yeni tikililer</p>
+						<a href="/Home/AllProduct">1-otaqli</a>
+						<a href="">2-otaqli</a>
+						<a href="">3-otaqli</a>
+						<a href="">4-otaqli</a>
+						<a href="">5-otaq ve ya daha cox</a>
+					</div>
+					<div class="item w-25 p-2">
+						<p>Kohne tikililer</p>
+						<a href="">1-otaqli</a>
+						<a href="">2-otaqli</a>
+						<a href="">3-otaqli</a>
+						<a href="">4-otaqli</a>
+						<a href="">5-otaq ve ya daha cox</a>
+					</div>
+					<div class="item w-25 p-2">
+						<p>Yasayis obyektleri</p>
+						<a href="">Menziller</a>
+						<a href="">Yeni tikililer</a>
+						<a href="">Kohne tikililer</a>
+						<a href="">Evler / Villalar</a>
+						<a href="">Baglar</a>
+					</div>
+					<div class="item w-25 p-2">
+						<p>Ticaret obyektleri</p>
+						<a href="">Ofisler</a>
+						<a href="">Qarajlar</a>
+						<a href="">Torpaq saheleri</a>
+						<a href="">Obyektler</a>
+					</div>
+				</div>
+			</div>
+			<div class="sag ms-2">
+				<a href="" class="w-100 p-1">
+					<span>Gunluk kiraye menziller</span>
+					<span>278 elan</span>
+				</a>
+				<a href="" class="w-100 my-2 p-1">
+					<span>Xerite uzre axtaris</span>
+					<span>65152 elan</span>
+				</a>
+				<a href="" class="w-100 p-1">
+					<span>Tikinti xidmetleri</span>
+					<span>4056 elan</span>
+				</a>
+			</div>
+		</div>
+
+		<!-- VIP ELANLAR -->
+
+		<div class="div2 w-100 d-flex flex-wrap my-2">
+			<div class="yuxari w-100 d-flex justify-content-between p-1">
+				<a href="/Home/ReadMoreVip" class="text-dark fw-bold">VIP ELANLAR</a>
+				<div class="d-flex justify-content-around">
+					<a href="/Home/ReadMoreVip">Daha cox</a>
+					@{
+						int a = !string.IsNullOrEmpty(Context.Request.Query["page"]) ? int.Parse(Context.Request.Query["page"]) : 0;
+					}
+					<div class="ikonlar d-flex justify-content-around px-4 mt-3 w-50">
+						<ul class="pagination">
+							<li class="page-item @(a==0 ? "disabled" : "")">
+								<a class="page-link" href="?page=@(a-1)"><i class="fa-solid fa-chevron-left"></i></a>
+							</li>
+							<li class="page-item @(a==ViewBag.PageCount2-1 ? "disabled" : "")">
+								<a class="page-link" href="?page=@(a+1)"><i class="fa-solid fa-chevron-right"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="asagi w-100 d-flex flex-wrap justify-content-between mt-3">
+				@foreach (var item in Model.VipElanlar)
+				{
+					<div class="item m-2">
+						<a href="">
+							<div class="sekil w-100 position-relative">
+								<i class="fa-solid fa-heart"></i>
+								@if (item.ProductTemir == true)
+								{
+									<i class="fa-solid fa-hammer"></i>
+								}
+								@if (item.ProductCixaris == true)
+								{
+									<i class="fa-solid fa-file"></i>
+								}
+								@if (item.ProductIpoteka == true)
+								{
+									<i class="fa-solid fa-percent"></i>
+								}
+								<i class="fa-solid fa-crown"></i>
+								<i class="fa-solid fa-gem"></i>
+								<i class="fa-solid fa-angle-left"></i>
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								@if (User.Identity.IsAuthenticated)
+								{
+									@if (@User.Claims.SingleOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name).Value == "Admin1")
+									{
+										<a href="/Admin/Edit/@item.ProductId"><i class="fa-solid fa-pen-to-square"></i></a>
+									}
+									@if(item.ProductUserId == int.Parse(User.FindFirst("Id").Value))
+									{
+									    <a href="/Admin/Delete/@item.ProductId"><i class="fa-solid fa-trash"></i></a>
+									}
+								}
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								<img src="/img/@item.Photos.FirstOrDefault().PhotoUrl" class="w-100">
+								<i class="fa-solid fa-angle-right"></i>
+							</div>
+							<div class="yazilar w-100 p-2">
+								<p><span>@item.ProductPrice</span><span>AZN</span></p>
+								<p>@item.ProductLocation</p>
+								<p><span>@item.ProductArea</span>m²</p>
+								<p><span>@item.ProductLocation</span>, <span>@item.ProductDate</span></p>
+							</div>
+						</a>
+					</div>
+				}
+			</div>
+		</div>
+
+		<!-- SON ELANLAR -->
+
+		<div class="div2 w-100 d-flex flex-wrap my-2">
+			<div class="yuxari w-100 d-flex justify-content-between p-1">
+				<a href="/Home/ReadMoreVip" class="text-dark fw-bold">SON ELANLAR</a>
+				<div class="d-flex justify-content-around">
+					<a href="/Home/ReadMoreVip">Daha cox</a>
+					@{
+						int b = !string.IsNullOrEmpty(Context.Request.Query["page"]) ? int.Parse(Context.Request.Query["page"]) : 0;
+					}
+					<div class="ikonlar d-flex justify-content-around px-4 mt-3 w-50">
+						<ul class="pagination">
+							<li class="page-item @(b==0 ? "disabled" : "")">
+								<a class="page-link" href="?page=@(b-1)"><i class="fa-solid fa-chevron-left"></i></a>
+							</li>
+							<li class="page-item @(b==ViewBag.PageCount3-1 ? "disabled" : "")">
+								<a class="page-link" href="?page=@(b+1)"><i class="fa-solid fa-chevron-right"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="asagi w-100 d-flex flex-wrap justify-content-between mt-3">
+				@foreach (var item in Model.SonElanlar)
+				{
+					<div class="item m-2">
+						<a href="">
+							<div class="sekil w-100 position-relative">
+								<i class="fa-solid fa-heart"></i>
+								@if (item.ProductTemir == true)
+								{
+									<i class="fa-solid fa-hammer"></i>
+								}
+								@if (item.ProductCixaris == true)
+								{
+									<i class="fa-solid fa-file"></i>
+								}
+								@if (item.ProductIpoteka == true)
+								{
+									<i class="fa-solid fa-percent"></i>
+								}
+								<i class="fa-solid fa-crown"></i>
+								<i class="fa-solid fa-gem"></i>
+								<i class="fa-solid fa-angle-left"></i>
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								@if (User.Identity.IsAuthenticated)
+								{
+									@if (@User.Claims.SingleOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name).Value == "Admin1")
+									{
+										<a href="/Admin/Edit/@item.ProductId"><i class="fa-solid fa-pen-to-square"></i></a>
+									}
+									<a href="/Admin/Delete/@item.ProductId"><i class="fa-solid fa-trash"></i></a>
+								}
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								<img src="/img/@item.Photos.FirstOrDefault().PhotoUrl" class="w-100">
+								<i class="fa-solid fa-angle-right"></i>
+							</div>
+							<div class="yazilar w-100 p-2">
+								<p><span>@item.ProductPrice</span><span>AZN</span></p>
+								<p>@item.ProductLocation</p>
+								<p><span>@item.ProductArea</span>m²</p>
+								<p><span>@item.ProductLocation</span>, <span>@item.ProductDate</span></p>
+							</div>
+						</a>
+					</div>
+				}
+			</div>
+		</div>
+
+		<!-- AGENTLIKLER -->
+
+	@*	<div class="div2 w-100 d-flex flex-wrap my-2">
+			<div class="yuxari w-100 d-flex justify-content-between p-1">
+				<a href="" class="text-dark">AGENTLIKLER</a>
+				<div class="d-flex justify-content-around">
+					<a href="">Daha cox</a>
+					<div class="ikonlar d-flex justify-content-around px-4 w-50">
+						<a href=""><i class="fa-solid fa-chevron-left"></i></a>
+						<a href=""><i class="fa-solid fa-chevron-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="asagi w-100 d-flex flex-wrap justify-content-between mt-3">
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F09%2F10%2F27%2F05%2F2660e84a-8c5b-462d-ab7c-bcf9d96a73c6%2F21701_oG0MH5wbXLwrZd9LwerlXQ.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar p-2 w-100">
+							<p><span>80 000</span><span>AZN</span></p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="#">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar p-2 w-100">
+							<p>80 000AZN</p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar p-2 w-100">
+							<p><span>80 000</span><span>AZN</span></p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar p-2 w-100">
+							<p><span>80 000</span><span>AZN</span></p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>*@
+
+		<!-- YASAYIS KOMPLEKSLERI -->
+
+	@*	<div class="div3 w-100 d-flex flex-wrap my-2">
+			<div class="yuxari w-100 d-flex justify-content-between p-1">
+				<div class="nese w-75 d-flex justify-content-between">
+					<a href="" class="text-dark">YASAYIS KOMPLEKSLERI</a>
+					<div class="secimler d-flex justify-content-between">
+						<a>Qiymetler 1 m2-ye gore</a>
+						<a>Menzile gore</a>
+					</div>
+				</div>
+				<div class=" nese1 d-flex justify-content-around py-4">
+					<a href="">Daha cox</a>
+				</div>
+			</div>
+			<div class="asagi w-100 d-flex flex-wrap justify-content-between mt-3">
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<img src="https://bina.azstatic.com/uploads/o460x345/2023%2F01%2F18%2F11%2F55%2F55%2F04c18797-61b5-416e-b20b-b9a1b44c1b5d%2Fpark%20academy.jpg"
+								 alt="" class="w-100">
+						</div>
+						<div class="yazilar p-2 w-100">
+							<p><span>278 600</span><span>AZN-den</span></p>
+							<p class="d-none"><span>3 050</span><span>AZN/m2-den</span></p>
+							<p><i class="fa-regular fa-building"></i> Park Academy</p>
+							<p><i class="fa-solid fa-location-dot"></i> Yasamal rayonu</p>
+							<p><i class="fa-brands fa-meta"></i> Elmler Akcademiyasi</p>
+							<p><i class="fa-solid fa-key"></i> Tehvil verilib</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<img src="https://bina.azstatic.com/uploads/o460x345/2023%2F01%2F18%2F11%2F55%2F55%2F04c18797-61b5-416e-b20b-b9a1b44c1b5d%2Fpark%20academy.jpg"
+								 alt="" class="w-100">
+						</div>
+						<div class="yazilar p-2 w-100">
+							<p><span>278 600</span><span>AZN-den</span></p>
+							<p class="d-none"><span>3 050</span><span>AZN/m2-den</span></p>
+							<p><i class="fa-regular fa-building"></i> Park Academy</p>
+							<p><i class="fa-solid fa-location-dot"></i> Yasamal rayonu</p>
+							<p><i class="fa-brands fa-meta"></i> Elmler Akcademiyasi</p>
+							<p><i class="fa-solid fa-key"></i> Tehvil verilib</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<img src="https://bina.azstatic.com/uploads/o460x345/2023%2F01%2F18%2F11%2F55%2F55%2F04c18797-61b5-416e-b20b-b9a1b44c1b5d%2Fpark%20academy.jpg"
+								 alt="" class="w-100">
+						</div>
+						<div class="yazilar p-2 w-100">
+							<p><span>278 600</span><span>AZN-den</span></p>
+							<p class="d-none"><span>3 050</span><span>AZN/m2-den</span></p>
+							<p><i class="fa-regular fa-building"></i> Park Academy</p>
+							<p><i class="fa-solid fa-location-dot"></i> Yasamal rayonu</p>
+							<p><i class="fa-brands fa-meta"></i> Elmler Akcademiyasi</p>
+							<p><i class="fa-solid fa-key"></i> Tehvil verilib</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<img src="https://bina.azstatic.com/uploads/o460x345/2023%2F01%2F18%2F11%2F55%2F55%2F04c18797-61b5-416e-b20b-b9a1b44c1b5d%2Fpark%20academy.jpg"
+								 alt="" class="w-100">
+						</div>
+						<div class="yazilar p-2 w-100">
+							<p><span>278 600</span><span>AZN-den</span></p>
+							<p class="d-none"><span>3 050</span><span>AZN/m2-den</span></p>
+							<p><i class="fa-regular fa-building"></i> Park Academy</p>
+							<p><i class="fa-solid fa-location-dot"></i> Yasamal rayonu</p>
+							<p><i class="fa-brands fa-meta"></i> Elmler Akcademiyasi</p>
+							<p><i class="fa-solid fa-key"></i> Tehvil verilib</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>*@
+
+		<!-- PREMIUM ELANLAR -->
+
+		<div class="div2 w-100 d-flex flex-wrap my-2">
+			<div class="yuxari w-100 d-flex justify-content-between p-1">
+				<a href="" class="text-dark">PREMIUM ELANLAR</a>
+				<div class="d-flex justify-content-around">
+					<a href="">Daha cox</a>
+					<div class="ikonlar d-flex justify-content-around px-4 w-50">
+						<a href=""><i class="fa-solid fa-chevron-left"></i></a>
+						<a href=""><i class="fa-solid fa-chevron-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="asagi w-100 d-flex flex-wrap justify-content-between mt-3">
+				@foreach (var item in Model.PremiumElanlar)
+				{
+					<div class="item m-2">
+						<a href="">
+							<div class="sekil w-100 position-relative">
+								<i class="fa-solid fa-heart"></i>
+								@if (item.ProductTemir == true)
+								{
+									<i class="fa-solid fa-hammer"></i>
+								}
+								@if (item.ProductCixaris == true)
+								{
+									<i class="fa-solid fa-file"></i>
+								}
+								@if (item.ProductIpoteka == true)
+								{
+									<i class="fa-solid fa-percent"></i>
+								}
+								<i class="fa-solid fa-crown"></i>
+								<i class="fa-solid fa-gem"></i>
+								<i class="fa-solid fa-angle-left"></i>
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								@if (User.Identity.IsAuthenticated)
+								{
+									@if (@User.Claims.SingleOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name).Value == "Admin1")
+									{
+										<a href="/Admin/Edit/@item.ProductId"><i class="fa-solid fa-pen-to-square"></i></a>
+									}
+									<a href="/Admin/Delete/@item.ProductId"><i class="fa-solid fa-trash"></i></a>
+								}
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								<img src="/img/@item.Photos.FirstOrDefault().PhotoUrl" class="w-100">
+								<i class="fa-solid fa-angle-right"></i>
+							</div>
+							<div class="yazilar w-100 p-2">
+								<p><span>@item.ProductPrice</span><span>AZN</span></p>
+								<p>@item.ProductLocation</p>
+								<p><span>@item.ProductArea</span>m²</p>
+								<p><span>@item.ProductLocation</span>, <span>@item.ProductDate</span></p>
+							</div>
+						</a>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section2 w-100 px-5">
+	<div class="container w-75 p-3">
+		<div class="yazilar">
+			<h4>bina.az - Ən son ev elanlari sayti</h4>
+			<p>
+				Azərbaycanın ən böyük elan bazası olan bina.az saytına daxil olmaqla, daşınmaz əmlak bazarının ən son
+				və
+				ən
+				yeni alqı-satqı və kirayə elanları ilə tanış olmaq olar. Burada alıcı və satıcı üçün çox rahat
+				interfeys
+				və
+				axtarış sistemi işləyir. Səhifədə Bakının rayonlarında satılan mənzillər, evlər/villalar, bağlar,
+				ofislər,
+				qarajlar, torpaqlar, obyektlər barədə geniş məlumat əldə etmək olar. İstifadəçilərin rahatlığı üçün
+				nəzərdə
+				tutulmuş filtrlər vasitəsi ilə siz istənilən axtarış kriteriyalarınızı sayta daxil edərək, ucuz və
+				ya
+				lüks,
+				təmirli və ya "pod mayak", şəhərin mərkəzində və ya kənar ərazilərdə mənzil, ev, ofislərlə tanış ola
+				bilərsiniz. Azərbaycanın daşınmaz emlak kataloqunu bina.az saytinda tapacaqsınız! Ən böyük ev
+				elanlari
+				sayti
+				olan bina.az saytında Siz çox tez bir zamanda və rahat şəkildə istədiyiniz, zövqünüzə uyğun ev,
+				mənzil,
+				obyekt və ya başqa bir əmlakı tapa bilərsiniz. Sadəcə bina.az saytına daxil olun. Yuxarıda yerləşən
+				seçim
+				panelindən lazımlı parametrlərini seçin. Məsələn, yeni və yaxud köhnə tikili, bir, iki, üç və daha
+				çox
+				otaqlı, mənzil və ya həyət evi/villa, kiraye evler və digər. Siz təkcə evləri yox, hətta ofis,
+				obyekt və
+				ya
+				torpaq sahələrini də axtara bilərsiniz. Bundan əlavə, məbləğə görə də seçim edə bilərsiniz.
+			</p>
+			<h4>bina.az saytında elan yerləşdirilməsi</h4>
+			<p>
+				Satılıq əmlakınız var? Siz bina.az saytında elanınızı asanlıqla yerləşdirə bilərsiniz. Bunun üçün
+				əmlakın
+				şəkillərini çəkin. Çalışın şəkillər keyfiyyətli olsun və yaxşı rakursdan çəkilsin. Əmlakın bütün
+				otaqların,
+				hətta mətbəx, hamam, balkonun da şəkillərin olması məsləhətlidır. Əmlakın təsvirini verin.
+				Yerləşməsi,
+				tam
+				ünvanı, mərtəbə, sahəsi, otaq sayı, təmirini və digər məlumatı ətraflı yazın. Əlaqə məlumatınızı
+				daxil
+				edin.
+				Əlaqə məlumatınızı – telefon nömrənizi və email ünvanınızı daxil etdikdə, diqqətli olun! Məlumatı
+				daxil
+				edib, yenidən yoxlayın - əlaqə məlumatı dəyişilmir. Elan saytda dərc olunduqdan sonra Siz əlaqə
+				məlumatınızı
+				düzəliş edə bilmərsiniz!
+			</p>
+			<h4>İndi evlərin satışı çox rahat oldu!</h4>
+			<p>
+				Emlak birjasinda en populyar emlak saytlarindan biri olan bina.az sayti sizə daşınmaz əmlak bazarında
+				olan
+				bütün təklflərini sizə təqdim edəcək. bina.az saytında pulsuz elan yerləşdirmək çox asandır! Sayta
+				daxil
+				olub "ELAN YERLƏŞDİRİN" düyməsinə sıxaraq, satmaq istədiyiniz daşınmaz əmlak haqqında əsas
+				məlumatları
+				daxil
+				edirsiz və bir neçə dəqiqədən sonra sizin elanınızı minlərlə istifadəçi görür. 1, 2, 3, 4, 5 otaqli
+				yeni
+				tikililer ve kohne tikililer. Mənzillər, Evlər / Villalar, Kiraye evler, Bağlar, Ofislər, Qarajlar,
+				Torpaq,
+				Obyektlər. Abşeron, Nərimanov, Sabunçu, Xətai, Binəqədi, Nəsimi, Suraxanı, Xəzər, Nizami, Qaradağ,
+				Səbail,
+				Yasamal rayonlarında evlərin alqı-satqısı və kirayəsi. Bütün əmlak bazari bina.az-da.
+			</p>
+			<h4>Bakida kiraye evler</h4>
+			<p>Kiraye axtarirsiniz ve ya evinizi kiraye vermek isteyirsiniz? Bunu Siz bina.az-da edə bilərsiniz.</p>
+			<h4>Ucuz evlərin alqı satqısı</h4>
+			<p>
+				Ucuz ev axtarırsız? bina.az saytına daxil olun, qiymət dərəcəsini daxil edin və əks olunmuş
+				nəticələrin
+				içində sizə ən uyğün daşınmaz əmlakı seçin.
+			</p>
+		</div>
+		<div class="xett w-100 mx-auto m-3"></div>
+		<div class="axtaris w-100">
+			<h4>POPULYAR AXTARIŞLAR</h4>
+			<div class="d-flex flex-wrap">
+				<a href="">yeni ev elanlari</a>
+				<a href="">yeni yasamalda ev elanlari</a>
+				<a href="">bakida ev elanlari</a>
+				<a href="">kiraye ev elanlari</a>
+				<a href="">dasinmaz emlak alqi satqisi</a>
+				<a href="">menziller</a>
+				<a href="">dasinmaz emlak satisi</a>
+				<a href="">kiraye evler</a>
+				<a href="">sumqayitda evler</a>
+				<a href="">xirdalanda evler</a>
+			</div>
+		</div>
+	</div>
+</section>
+

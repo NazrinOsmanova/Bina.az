@@ -1,0 +1,241 @@
+﻿@using Proje1.Models;
+@model List<Product>;
+
+@{
+	Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section4 w-100 px-5">
+	<div class="container w-75 pb-3">
+		<div class="div4 w-100 py-3">
+			<div class="bir my-2">
+				<a href="" class="text-dark">Dasinmaz emlak</a>
+				<i class="fa-solid fa-chevron-right mx-2"></i>
+				<a href="" class="text-dark">Kiraye</a>
+			</div>
+			<div class="iki py-3 my-2">
+				<h5>Kiraye evler</h5>
+				<div class="items mt-3">
+					<a href="">Menzil</a>
+					<a href="">Yeni tikili</a>
+					<a href="">Kohne tikili</a>
+					<a href="">Ev/Villa</a>
+					<a href="">Bag</a>
+					<a href="">Ofis</a>
+					<a href="">Qaraj</a>
+					<a href="">Torpaq</a>
+					<a href="">Obyekt</a>
+				</div>
+			</div>
+			<div class="uc d-flex justify-content-between my-2">
+				<p><span>15486</span> elan tapıldı</p>
+				<div class="daire d-flex justify-content-between">
+					<div class="ikonlar bg-white me-2 px-4">
+						<a href="" class="text-dark me-1"><i class="fa-regular fa-map p-2"></i>Xerite</a>
+						<a href="" class="text-dark"><i class="fa-solid fa-table-cells-large p-3"></i>Siyahi</a>
+					</div>
+					<select name="">
+						<option value="">tarix uzre</option>
+						<option value="">sahe uzre</option>
+						<option value="">qiymet uzre (ucuzdan bahaya)</option>
+						<option value="">tarix uzre (bahadan ucuza)</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="div2 w-100 d-flex flex-wrap my-2">
+			<div class="yuxari w-100 px-1 py-4">
+				<a href="" class="text-dark">ELANLAR</a>
+			</div>
+			<div class="asagi w-100 d-flex flex-wrap justify-content-between mt-3">
+				@foreach (var item in Model)
+				{
+					<div class="item m-2">
+						<a href="">
+							<div class="sekil w-100 position-relative">
+								<i class="fa-solid fa-heart"></i>
+								@if (item.ProductTemir == true)
+								{
+									<i class="fa-solid fa-hammer"></i>
+								}
+								@if (item.ProductCixaris == true)
+								{
+									<i class="fa-solid fa-file"></i>
+								}
+								@if (item.ProductIpoteka == true)
+								{
+									<i class="fa-solid fa-percent"></i>
+								}
+								<i class="fa-solid fa-crown"></i>
+								<i class="fa-solid fa-gem"></i>
+								<i class="fa-solid fa-angle-left"></i>
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								@if (User.Identity.IsAuthenticated)
+								{
+									@if (@User.Claims.SingleOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name).Value == "Admin1")
+									{
+										<a href="/Admin/Edit/@item.ProductId"><i class="fa-solid fa-pen-to-square"></i></a>
+									}
+									<a href="/Admin/Delete/@item.ProductId"><i class="fa-solid fa-trash"></i></a>
+								}
+								<a href="/Home/ReadMore/@item.ProductId"><i class="fa-solid fa-circle-info"></i></a>
+								<img src="/img/@item.Photos.FirstOrDefault().PhotoUrl" class="w-100">
+								<i class="fa-solid fa-angle-right"></i>
+							</div>
+							<div class="yazilar w-100 p-2">
+								<p><span>@item.ProductPrice</span><span>AZN</span></p>
+								<p>@item.ProductLocation</p>
+								<p><span>@item.ProductArea</span>m²</p>
+								<p><span>@item.ProductLocation</span>, <span>@item.ProductDate</span></p>
+							</div>
+						</a>
+					</div>
+				}
+			</div>
+		</div>
+		<div class="reklam w-100 text-light text-center">
+			BURDA SIZIN REKLAMINIZ OLA BILERDI
+		</div>
+		<div class="div2 w-100 my-2">
+			<div class="asagi w-100 d-flex flex-wrap justify-content-between mt-3">
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar w-100 p-2">
+							<p><span>80 000</span><span>AZN</span></p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="#">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar w-100 p-2">
+							<p>80 000AZN</p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar w-100 p-2">
+							<p><span>80 000</span><span>AZN</span></p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+				<div class="item m-2">
+					<a href="">
+						<div class="sekil w-100 position-relative">
+							<i class="fa-solid fa-file"></i>
+							<i class="fa-solid fa-heart"></i>
+							<i class="fa-solid fa-hammer"></i>
+							<i class="fa-solid fa-crown"></i>
+							<i class="fa-solid fa-gem"></i>
+							<i class="fa-solid fa-percent"></i>
+							<i class="fa-solid fa-angle-left"></i>
+							<img src="https://bina.azstatic.com/uploads/large/2023%2F02%2F17%2F15%2F22%2F13%2Ff2811479-85d6-49f0-b659-8bf9a86276de%2F73392_ifqwOjR7lSWZFgGtFMAkug.jpg"
+								 alt="" class="w-100">
+							<i class="fa-solid fa-angle-right"></i>
+						</div>
+						<div class="yazilar w-100 p-2">
+							<p><span>80 000</span><span>AZN</span></p>
+							<p>Baki</p>
+							<p>75m2</p>
+							<p>Baki, 21 mart 2023</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="sehife bg-white w-100 py-3">
+			<ul class="pagination justify-content-center">
+				<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="section2 w-100 px-5">
+	<div class="container w-75 p-3">
+		<div class="yazilar">
+			<h4>Kiraye evler axtarırsınızsa, müraciət edəcəyiniz yeganə ünvan bina.az saytıdır</h4>
+			<ul>
+				<li>
+					Evlerin kirayesi prosesi saytda çox sadə şəkildə təşkil olunub. İstəyinizə uyğun olaraq kirayə
+					ev elanları günlük və aylıq bölümlərə ayırmışdır. Məsələn, Bakida ev kirayesi seçib, ancaq Bakı
+					şəhərində olan ev kirayəsi elanlari görəcəksiniz.
+				</li>
+				<li>
+					bina.az saytında bina evlərin və ya həyət evlərin kirayəsi haqqında ən son kiraye ev elanlari
+					qabağınıza çıxacaq.
+				</li>
+			</ul>
+			<h4>Əgər siz alqı və ya satqı elanı yerləşdirmək istərirsinizsə</h4>
+			<p>
+				bina.az saytı ilə siz Azərbaycanın hər bir nöqtəsində özünüzə uyğun olan kiraye ev elanlarini tapa
+				bilərsiniz. Ev elanlari kiraye evler, kiraye baglar, kiraye villalar, bina evleri, heyet evlerin
+				kirayesi - bunlar hamısı - bina.az saytında! Hər gün minlərlə kiraye evler heyet evleri elanları
+				tapılır. Kirayə evlərin qiymətləri ev yerləşdiyi şəhərdən, ünvandan, otaq sayından, təmirdən
+				asılıdır. Kiraye evler Bakida, Sumqayıtda olan evlərdən bahadır. Ev kirayeleri bina.az-da! Kiraye
+				bina evleri, kiraye heyet evleri: bütün kirayə ev elanları bizim saytımızda rahat şəkildə sizə uyğun
+				parametrlərlə və şərtlərlə qarşınızdadır.
+			</p>
+		</div>
+		<div class="xett w-100 mx-auto m-3"></div>
+		<div class="axtaris w-100">
+			<h4>POPULYAR AXTARIŞLAR</h4>
+			<div class="d-flex flex-wrap">
+				<a href="">bakida kiraye bag evleri</a>
+				<a href="">bakida kiraye evler</a>
+				<a href="">sumqayitda kiraye evler</a>
+				<a href="">ucuz kiraye evler</a>
+				<a href="">xetaide kiraye evler</a>
+			</div>
+		</div>
+	</div>
+</section>
