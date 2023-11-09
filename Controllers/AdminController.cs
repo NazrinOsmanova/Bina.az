@@ -98,7 +98,6 @@ namespace Proje1.Controllers
                 var properties = new AuthenticationProperties();
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, properties).Wait();
                 return RedirectToAction("Index", "Home");
-
 			}
 			else
 			{
@@ -140,7 +139,6 @@ namespace Proje1.Controllers
             user.UserPhoto = "Capture21.PNG";
             _sql.Users.Add(user);
             _sql.SaveChanges();
-           
             return RedirectToAction("Giris");
         }
 
